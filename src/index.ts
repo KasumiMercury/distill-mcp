@@ -1,6 +1,7 @@
 import {distillDocumentFromURL} from "./distill/distillDocumentFromURL.js";
 import {McpServer} from '@modelcontextprotocol/sdk/server/mcp.js'
-import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import {StdioServerTransport} from "@modelcontextprotocol/sdk/server/stdio.js";
+import {z} from "zod";
 
 const server = new McpServer({
 	name: "distill-mcp",
@@ -11,25 +12,35 @@ const server = new McpServer({
 	},
 })
 
-// const args = process.argv.slice(2)
-// const targetUrl = args[0]
-//
-// if (!targetUrl) {
-// 	console.error('Please provide a URL as an argument.')
-// 	process.exit(1)
-// }
-//
-// distillDocumentFromURL(targetUrl)
-// 	.then((result) => {
-// 		console.log('Distilled Document:', result)
-// 		console.log('Done!')
-// 	})
-// 	.catch((error) => {
-// 		console.error('Error:', error)
-// 	})
-// 	.finally(() => {
-// 		process.exit(0)
-// 	})
+server.tool(
+	"get-title",
+	"Get the title of a web page",
+	{
+		url: z.string().url(),
+	},
+	async ({url}) => {
+		const title = await distillDocumentFromURL(url);
+		if (!title) {
+			return {
+				content: [
+					{
+						type: "text",
+						text: "Failed to retrieve title",
+					},
+				],
+			};
+		}
+
+		return {
+			content: [
+				{
+					type: "text",
+					text: `Title of the page: ${title}`,
+				},
+			],
+		};
+	}
+)
 
 async function main() {
 	const transport = new StdioServerTransport();
