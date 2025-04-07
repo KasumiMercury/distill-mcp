@@ -14,15 +14,9 @@ export const distillDocumentFromURL = async (url: string): Promise<string> => {
 
 	const article = new Readability(document).parse();
 
-	if (!article) {
+	if (!article?.content) {
 		throw new Error("Failed to parse article");
 	}
 
-	if (!article.content) {
-		throw new Error("Failed to get article content");
-	}
-
-	const turndownService = new TurndownService();
-	const sanitizedContent = DOMPurify.sanitize(article.content);
-	return turndownService.turndown(sanitizedContent);
+	return article.content;
 }
