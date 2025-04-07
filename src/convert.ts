@@ -1,5 +1,6 @@
 import TurndownService from "turndown";
-import DOMPurify from "dompurify";
+import { JSDOM } from 'jsdom';
+import DOMPurify from 'dompurify';
 
 export const convertToMarkdown = (html: string): string => {
 	if (!html) {
@@ -8,6 +9,10 @@ export const convertToMarkdown = (html: string): string => {
 
 	const turndownService = new TurndownService();
 
-	const sanitizedContent = DOMPurify.sanitize(html);
+	const window = new JSDOM('').window;
+	// @ts-ignore
+	const purify = DOMPurify(window);
+
+	const sanitizedContent = purify.sanitize(html);
 	return turndownService.turndown(sanitizedContent);
 }

@@ -1,7 +1,5 @@
 import {JSDOM} from "jsdom";
 import {Readability} from "@mozilla/readability";
-import DOMPurify from "dompurify";
-import TurndownService from "turndown";
 
 
 export const distillDocumentFromURL = async (url: string): Promise<string> => {
