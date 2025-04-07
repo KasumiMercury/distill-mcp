@@ -2,6 +2,7 @@ import {distillDocumentFromURL} from "./distillDocumentFromURL.js";
 import {McpServer} from '@modelcontextprotocol/sdk/server/mcp.js'
 import {StdioServerTransport} from "@modelcontextprotocol/sdk/server/stdio.js";
 import {z} from "zod";
+import {convertToMarkdown} from "./convert.js";
 
 const server = new McpServer({
 	name: "distill-mcp",
@@ -13,19 +14,31 @@ const server = new McpServer({
 })
 
 server.tool(
-	"get-title",
-	"Get the title of a web page",
+	"get-article-as-markdown",
+	"Get article as markdown",
 	{
 		url: z.string().url(),
 	},
 	async ({url}) => {
-		const title = await distillDocumentFromURL(url);
-		if (!title) {
+		const article = await distillDocumentFromURL(url);
+		if (!article) {
 			return {
 				content: [
 					{
 						type: "text",
-						text: "Failed to retrieve title",
+						text: "Failed to retrieve article",
+					},
+				],
+			};
+		}
+
+		const markdown = convertToMarkdown(article);
+		if (!markdown) {
+			return {
+				content: [
+					{
+						type: "text",
+						text: "Failed to convert article to markdown",
 					},
 				],
 			};
@@ -35,7 +48,7 @@ server.tool(
 			content: [
 				{
 					type: "text",
-					text: `Title of the page: ${title}`,
+					text: markdown,
 				},
 			],
 		};
