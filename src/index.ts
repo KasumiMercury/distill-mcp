@@ -14,7 +14,7 @@ const server = new McpServer({
 })
 
 server.tool(
-	"get-article-as-markdown",
+	"get_article-as-markdown",
 	"Get article as markdown from URL",
 	{
 		url: z.string().url(),
