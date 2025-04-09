@@ -20,38 +20,40 @@ server.tool(
 		url: z.string().url(),
 	},
 	async ({url}) => {
-		const article = await distillDocumentFromURL(url);
-		if (!article) {
+		try {
+			const article = await distillDocumentFromURL(url);
+			if (!article) {
+				return {
+					content: [
+						{
+							type: "text",
+							text: "Failed to retrieve article",
+						},
+					],
+				};
+			}
+
+			const markdown = convertToMarkdown(article);
+
 			return {
 				content: [
 					{
 						type: "text",
-						text: "Failed to retrieve article",
+						text: markdown,
 					},
 				],
 			};
-		}
-
-		const markdown = convertToMarkdown(article);
-		if (!markdown) {
+		} catch (error) {
+			console.error("Error in get_article-as-markdown:", error);
 			return {
 				content: [
 					{
 						type: "text",
-						text: "Failed to convert article to markdown",
+						text: "Failed to retrieve article: " + error,
 					},
 				],
 			};
 		}
-
-		return {
-			content: [
-				{
-					type: "text",
-					text: markdown,
-				},
-			],
-		};
 	}
 )
 
