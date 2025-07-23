@@ -31,7 +31,7 @@ importers:
         version: 7.2.0
       zod:
         specifier: ^4.0.0
-        version: 4.0.5
+        version: 4.0.7
     devDependencies:
       typescript:
         specifier: ^5.5.3
@@ -572,8 +572,8 @@ packages:
   zod@3.25.76:
     resolution: {integrity: sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==}
 
-  zod@4.0.5:
-    resolution: {integrity: sha512-/5UuuRPStvHXu7RS+gmvRf4NXrNxpSllGwDnCBcJZtQsKrviYXm54yDGV2KYNLT5kq0lHGcl7lqWJLgSaG+tgA==}
+  zod@4.0.7:
+    resolution: {integrity: sha512-AKvYUuvqmyRf21eNxjuO++WPrQHhWg8i/4POzBLL//qVhcxA6gOptSDxXKM2S+uh8FtPV3MU/QZKOxqwsRV5kg==}
 
 snapshots:
 
@@ -1138,4 +1138,4 @@ snapshots:
 
   zod@3.25.76: {}
 
-  zod@4.0.5: {}
+  zod@4.0.7: {}
