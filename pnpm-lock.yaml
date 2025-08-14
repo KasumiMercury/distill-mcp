@@ -28,7 +28,7 @@ importers:
         version: 26.1.0
       turndown:
         specifier: ^7.2.0
-        version: 7.2.0
+        version: 7.2.1
       zod:
         specifier: ^4.0.0
         version: 4.0.17
@@ -491,8 +491,8 @@ packages:
     resolution: {integrity: sha512-hdF5ZgjTqgAntKkklYw0R03MG2x/bSzTtkxmIRw/sTNV8YXsCJ1tfLAX23lhxhHJlEf3CRCOCGGWw3vI3GaSPw==}
     engines: {node: '>=18'}
 
-  turndown@7.2.0:
-    resolution: {integrity: sha512-eCZGBN4nNNqM9Owkv9HAtWRYfLA4h909E/WGAWWBpmB275ehNhZyk87/Tpvjbp0jjNl9XwCsbe6bm6CqFsgD+A==}
+  turndown@7.2.1:
+    resolution: {integrity: sha512-7YiPJw6rLClQL3oUKN3KgMaXeJJ2lAyZItclgKDurqnH61so4k4IH/qwmMva0zpuJc/FhRExBBnk7EbeFANlgQ==}
 
   type-is@2.0.1:
     resolution: {integrity: sha512-OZs6gsjF4vMp32qrCbiVSkrFmXtG/AZhY3t0iAMrMBiAZyV9oALtXO8hsrHbMXF9x6L3grlFuwW2oAz7cav+Gw==}
@@ -1081,7 +1081,7 @@ snapshots:
     dependencies:
       punycode: 2.3.1
 
-  turndown@7.2.0:
+  turndown@7.2.1:
     dependencies:
       '@mixmark-io/domino': 2.2.0
 
