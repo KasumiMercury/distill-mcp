@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@modelcontextprotocol/sdk':
         specifier: ^1.8.0
-        version: 1.20.1
+        version: 1.20.2
       '@mozilla/readability':
         specifier: ^0.6.0
         version: 0.6.0
@@ -85,8 +85,8 @@ packages:
   '@mixmark-io/domino@2.2.0':
     resolution: {integrity: sha512-Y28PR25bHXUg88kCV7nivXrP2Nj2RueZ3/l/jdx6J9f8J4nsEGcgX0Qe6lt7Pa+J79+kPiJU3LguR6O/6zrLOw==}
 
-  '@modelcontextprotocol/sdk@1.20.1':
-    resolution: {integrity: sha512-j/P+yuxXfgxb+mW7OEoRCM3G47zCTDqUPivJo/VzpjbG8I9csTXtOprCf5FfOfHK4whOJny0aHuBEON+kS7CCA==}
+  '@modelcontextprotocol/sdk@1.20.2':
+    resolution: {integrity: sha512-6rqTdFt67AAAzln3NOKsXRmv5ZzPkgbfaebKBqUbts7vK1GZudqnrun5a8d3M/h955cam9RHZ6Jb4Y1XhnmFPg==}
     engines: {node: '>=18'}
 
   '@mozilla/readability@0.6.0':
@@ -660,7 +660,7 @@ snapshots:
 
   '@mixmark-io/domino@2.2.0': {}
 
-  '@modelcontextprotocol/sdk@1.20.1':
+  '@modelcontextprotocol/sdk@1.20.2':
     dependencies:
       ajv: 6.12.6
       content-type: 1.0.5
